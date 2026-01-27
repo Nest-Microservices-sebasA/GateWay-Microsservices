@@ -5,11 +5,13 @@ Este proyecto corresponde a la Prueba Técnica – Desarrollador Full Stack, cuy
 
 La aplicación permite a los usuarios:
 
-Autenticarse mediante usuario y contraseña
+Autenticarse mediante usuario y contraseña (inconveniente al gestonar jwt)
 
-Visualizar publicaciones de otros usuarios
+Visualizar publicaciones de otros usuarios (visualizacion sin relacion)
 
-Crear nuevas publicaciones
+Crear nuevas publicaciones (sin usuario asosiado)
+
+
 
 El backend está desarrollado con NestJS, el frontend con React, la base de datos es PostgreSQL, y todo el sistema se ejecuta mediante Docker Compose.
 
