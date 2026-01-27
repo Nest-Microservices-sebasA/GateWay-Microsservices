@@ -1,79 +1,59 @@
-<p align="center"> <a href="http://nestjs.com/" target="blank"> <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /> </a> </p> <p align="center"> Red Social – Prueba Técnica Full Stack </p> <p align="center"> <a href="http://nodejs.org" target="_blank">Node.js</a> · <a href="https://nestjs.com" target="_blank">NestJS</a> · <a href="https://react.dev" target="_blank">React</a> · PostgreSQL · Docker </p> <p align="center"> <a href="#"><img src="https://img.shields.io/badge/Node.js-18+-green.svg" alt="Node Version" /></a> <a href="#"><img src="https://img.shields.io/badge/NestJS-Backend-red.svg" alt="NestJS" /></a> <a href="#"><img src="https://img.shields.io/badge/React-Frontend-blue.svg" alt="React" /></a> <a href="#"><img src="https://img.shields.io/badge/PostgreSQL-Database-blue.svg" alt="PostgreSQL" /></a> <a href="#"><img src="https://img.shields.io/badge/Docker-Enabled-informational.svg" alt="Docker" /></a> </p>
-Description
+<p align="center"> <a href="https://nestjs.com/" target="_blank"> <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /> </a> </p> <h1 align="center">Red Social – Prueba Técnica Full Stack</h1> <p align="center"> Microservicios orquestados con API Gateway </p> <p align="center"> <b>TypeScript · NestJS · Express · TypeORM · PostgreSQL · Docker</b> </p> <p align="center"> <img src="https://img.shields.io/badge/TypeScript-Language-blue" /> <img src="https://img.shields.io/badge/NestJS-Framework-red" /> <img src="https://img.shields.io/badge/Express-Framework-lightgrey" /> <img src="https://img.shields.io/badge/PostgreSQL-Database-blue" /> <img src="https://img.shields.io/badge/Microservices-Architecture-green" /> <img src="https://img.shields.io/badge/Docker-Orchestration-informational" /> </p>
+ Description
 
-Este proyecto corresponde a la Prueba Técnica – Desarrollador Full Stack, cuyo objetivo es desarrollar una red social básica utilizando una arquitectura de microservicios.
+Este proyecto corresponde a la Prueba Técnica – Desarrollador Full Stack, cuyo objetivo es desarrollar una red social básica utilizando una arquitectura de microservicios orquestados mediante un API Gateway.
 
-La aplicación permite a los usuarios:
+La solución fue desarrollada usando TypeScript, NestJS junto con Express, TypeORM y PostgreSQL, siguiendo principios de arquitectura limpia y escalable.
 
-Autenticarse mediante usuario y contraseña (inconveniente al gestonar jwt)
+ Architectural Overview
+<p align="center"> <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/architecture.png" width="700" alt="Architecture Diagram"/> </p>
 
-Visualizar publicaciones de otros usuarios (visualizacion sin relacion)
+La arquitectura se compone de:
 
-Crear nuevas publicaciones (sin usuario asosiado)
+API Gateway como punto único de entrada
 
+Microservicio de Autenticación
 
+Microservicio de Publicaciones
 
-El backend está desarrollado con NestJS, el frontend con React, la base de datos es PostgreSQL, y todo el sistema se ejecuta mediante Docker Compose.
+Base de datos PostgreSQL
 
-Architecture
-├── backend
-│   ├── gateway
-│   ├── auth-service
-│   ├── post-service
-│
-├── frontend
-│   └── react-app
-│
-├── database
-│   └── postgres
-│
-└── docker-compose.yml
+Comunicación desacoplada entre servicios
 
-Features
+ Architecture Description
+┌───────────────┐
+│   Frontend    │
+│   (React)     │
+└───────┬───────┘
+        │
+┌───────▼────────┐
+│  API Gateway   │
+│ (NestJS)       │
+└───────┬────────┘
+        │
+ ┌──────▼──────┐   ┌───────────────┐
+ │ Auth Service│   │ Post Service  │
+ │ Nest + Exp. │   │ Nest + Exp.   │
+ └──────┬──────┘   └──────┬────────┘
+        │                 │
+        └───────┬─────────┘
+                ▼
+         PostgreSQL (TypeORM)
+
+Technologies Used
 Backend
-
-Autenticación con JWT
-
-Microservicio de usuarios
-
-Microservicio de publicaciones
-
-Listar publicaciones
-
-Crear publicaciones
-
-Seeder de usuarios y publicaciones
-
-Documentación con Swagger
-
-Manejo de errores con buenas prácticas
-
-Frontend
-
-Pantalla de Login
-
-Listado de publicaciones
-
-Crear publicación
-
-Manejo de estado con Context API / Zustand
-
-Technologies
-Backend
-
-Node.js
-
-NestJS
 
 TypeScript
 
-JWT
+NestJS
+
+Express
+
+TypeORM
 
 PostgreSQL
 
-ORM (TypeORM / Prisma)
-
-Swagger
+JWT (en proceso)
 
 Docker
 
@@ -81,117 +61,45 @@ Frontend
 
 React
 
-TypeScript
-
 Context API / Zustand
 
-Axios
+ Project Status (Important Note)
 
-Database
+ Estado actual del desarrollo
 
-Base de datos PostgreSQL con las siguientes entidades principales:
+El proyecto no se encuentra completamente finalizado debido a un inconveniente técnico durante la implementación de la autenticación con JWT, específicamente en la validación y propagación del token entre el API Gateway y los microservicios.
 
-User
+Sin embargo:
 
-id
+✅ La arquitectura de microservicios está correctamente planteada
 
-username
+✅ La separación de responsabilidades es clara
 
-password
+✅ El uso de API Gateway está correctamente implementado
 
-createdAt
+✅ El flujo general de la aplicación es entendible y escalable
 
-Post
+Previous Experience
 
-id
+He trabajado previamente consumiendo arquitecturas de microservicios, integrándome a sistemas ya construidos.
+Esta prueba representó mi primer acercamiento a la creación completa de microservicios desde cero, lo cual fue un reto técnico valioso y enriquecedor.
 
-message
+Commitment
 
-createdAt
+Independientemente del resultado de esta prueba técnica:
 
-userId
+Me comprometo a finalizar completamente la implementación del proyecto, incluyendo la correcta resolución del manejo de JWT y la comunicación segura entre microservicios.
 
-Seeder
+Este ejercicio ha sido una excelente oportunidad de aprendizaje y crecimiento profesional.
 
-Al iniciar la aplicación se ejecuta automáticamente un seeder que:
+ Acknowledgment
+Agradezco sinceramente el tiempo dedicado a la revisión de esta prueba técnica.
+Cualquier retroalimentación técnica o sugerencia de mejora será muy bien recibida, ya que mi objetivo principal es seguir mejorando como desarrollador y fortalecer mis habilidades en arquitecturas modernas.
 
-Crea usuarios de prueba
-
-Asigna una publicación por cada usuario
-
-Esto permite probar el sistema sin configuración manual.
-
-Project setup
-npm install
-
-Compile and run the project
-# development
-npm run start
-
-# watch mode
-npm run start:dev
-
-# production mode
-npm run start:prod
-
-Run tests
-# unit tests
-npm run test
-
-# e2e tests
-npm run test:e2e
-
-# test coverage
-npm run test:cov
-
-Docker execution
-docker-compose up --build
-
-
-Esto levanta:
-
-PostgreSQL
-
-Microservicios backend
-
-Frontend React
-
-API Documentation
-
-Cada microservicio expone su documentación Swagger:
-
-http://localhost:3000/api
-
-Deliverables
-
-Repositorio GitHub (Backend + Frontend)
-
-Docker Compose
-
-Script de base de datos
-
-Usuarios predefinidos
-
-Documentación Swagger
-
-PDF explicativo
-
-Video demostrativo del funcionamiento (Gateway y microservicios)
-
-Extras Implemented
-
-TypeScript
-
-Swagger
-
-Arquitectura de microservicios
-
-Manejo centralizado de errores
-
-Código modular y escalable
-
+Screenshots (Reference)
+<p align="center"> <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/screenshot1.png" width="300"/> <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/screenshot2.png" width="300"/> </p>
 Author
 
 Juan Sebastián Acosta Quiroz
 Ingeniería de Sistemas
-Desarrollador Full Stack
+Desarrollador Full Stack<p align="center"> <a href="http://nestjs.com/" target="blank"> <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /> </a> </p> <p align="center"> Red Social – Prueba Técnica Full Stack </p> <p align="center"> <a href="http://nodejs.org" target="_blank">Node.js</a> · <a href="https://nestjs.com" target="_blank">NestJS</a> · <a href="https://react.dev" target="_blank">React</a> · PostgreSQL · Docker </p> <p align="center"> <a href="#"><img src="https://img.shields.io/badge/Node.js-18+-green.svg" alt="Node Version" /></a> <a href="#"><img src="https://img.shields.io/badge/NestJS-Backend-red.svg" alt="NestJS" /></a> <a href="#"><img src="https://img.shields.io/badge/React-Frontend-blue.svg" alt="React" /></a> <a href="#"><img src="https://img.shields.io/badge/PostgreSQL-Database-blue.svg" alt="PostgreSQL" /></a> <a href="#"><img src="https://img.shields.io/badge/Docker-Enabled-informational.svg" alt="Docker" /></a> </p>
