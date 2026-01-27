@@ -21,24 +21,7 @@ Base de datos PostgreSQL
 Comunicación desacoplada entre servicios
 
  Architecture Description
-┌───────────────┐
-│   Frontend    │
-│   (React)     │
-└───────┬───────┘
-        │
-┌───────▼────────┐
-│  API Gateway   │
-│ (NestJS)       │
-└───────┬────────┘
-        │
- ┌──────▼──────┐   ┌───────────────┐
- │ Auth Service│   │ Post Service  │
- │ Nest + Exp. │   │ Nest + Exp.   │
- └──────┬──────┘   └──────┬────────┘
-        │                 │
-        └───────┬─────────┘
-                ▼
-         PostgreSQL (TypeORM)
+
 
 Technologies Used
 Backend
