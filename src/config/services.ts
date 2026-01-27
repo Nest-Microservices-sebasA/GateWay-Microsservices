@@ -1,0 +1,2 @@
+export const MESSAGE_SERVICE = 'MESSAGE_SERVICE';
+export const USER_SERVICE = 'USER_SERVICE';
