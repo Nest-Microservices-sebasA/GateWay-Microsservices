@@ -16,6 +16,8 @@ Microservicio de Autenticación
 
 Microservicio de Publicaciones
 
+Microservicio de Usuarios
+
 Base de datos PostgreSQL
 
 Comunicación desacoplada entre servicios
