@@ -1,99 +1,90 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+<p align="center"> <a href="https://nestjs.com/" target="_blank"> <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /> </a> </p> <h1 align="center">Red Social – Prueba Técnica Full Stack</h1> <p align="center"> Microservicios orquestados con API Gateway </p> <p align="center"> <b>TypeScript · NestJS · Express · TypeORM · PostgreSQL · Docker</b> </p> <p align="center"> <img src="https://img.shields.io/badge/TypeScript-Language-blue" /> <img src="https://img.shields.io/badge/NestJS-Framework-red" /> <img src="https://img.shields.io/badge/Express-Framework-lightgrey" /> <img src="https://img.shields.io/badge/PostgreSQL-Database-blue" /> <img src="https://img.shields.io/badge/Microservices-Architecture-green" /> <img src="https://img.shields.io/badge/Docker-Orchestration-informational" /> </p>
+ Description
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este proyecto corresponde a la Prueba Técnica – Desarrollador Full Stack, cuyo objetivo es desarrollar una red social básica utilizando una arquitectura de microservicios orquestados mediante un API Gateway.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+La solución fue desarrollada usando TypeScript, NestJS junto con Express, TypeORM y PostgreSQL, siguiendo principios de arquitectura limpia y escalable.
 
-## Description
+ Architectural Overview
+<p align="center"> <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/architecture.png" width="700" alt="Architecture Diagram"/> </p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+La arquitectura se compone de:
 
-## Project setup
+API Gateway como punto único de entrada
 
-```bash
-$ npm install
-```
+Microservicio de Autenticación
 
-## Compile and run the project
+Microservicio de Publicaciones
 
-```bash
-# development
-$ npm run start
+Microservicio de Usuarios
 
-# watch mode
-$ npm run start:dev
+Base de datos PostgreSQL
 
-# production mode
-$ npm run start:prod
-```
+Comunicación desacoplada entre servicios
 
-## Run tests
+ Architecture Description
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+Technologies Used
+Backend
 
-# test coverage
-$ npm run test:cov
-```
+TypeScript
 
-## Deployment
+NestJS
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Express
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+TypeORM
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+PostgreSQL
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+JWT (en proceso)
 
-## Resources
+Docker
 
-Check out a few resources that may come in handy when working with NestJS:
+Frontend
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+React
 
-## Support
+Context API / Zustand
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+ Project Status (Important Note)
 
-## Stay in touch
+ Estado actual del desarrollo
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+El proyecto no se encuentra completamente finalizado debido a un inconveniente técnico durante la implementación de la autenticación con JWT, específicamente en la validación y propagación del token entre el API Gateway y los microservicios.
 
-## License
+Sin embargo:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+✅ La arquitectura de microservicios está correctamente planteada
+
+✅ La separación de responsabilidades es clara
+
+✅ El uso de API Gateway está correctamente implementado
+
+✅ El flujo general de la aplicación es entendible y escalable
+
+Previous Experience
+
+He trabajado previamente consumiendo arquitecturas de microservicios, integrándome a sistemas ya construidos.
+Esta prueba representó mi primer acercamiento a la creación completa de microservicios desde cero, lo cual fue un reto técnico valioso y enriquecedor.
+
+Commitment
+
+Independientemente del resultado de esta prueba técnica:
+
+Me comprometo a finalizar completamente la implementación del proyecto, incluyendo la correcta resolución del manejo de JWT y la comunicación segura entre microservicios.
+
+Este ejercicio ha sido una excelente oportunidad de aprendizaje y crecimiento profesional.
+
+ Acknowledgment
+Agradezco sinceramente el tiempo dedicado a la revisión de esta prueba técnica.
+Cualquier retroalimentación técnica o sugerencia de mejora será muy bien recibida, ya que mi objetivo principal es seguir mejorando como desarrollador y fortalecer mis habilidades en arquitecturas modernas.
+
+Screenshots (Reference)
+<p align="center"> <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/screenshot1.png" width="300"/> <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/screenshot2.png" width="300"/> </p>
+Author
+
+Juan Sebastián Acosta Quiroz
+Ingeniería de Sistemas
+Desarrollador Full Stack<p align="center"> <a href="http://nestjs.com/" target="blank"> <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /> </a> </p> <p align="center"> Red Social – Prueba Técnica Full Stack </p> <p align="center"> <a href="http://nodejs.org" target="_blank">Node.js</a> · <a href="https://nestjs.com" target="_blank">NestJS</a> · <a href="https://react.dev" target="_blank">React</a> · PostgreSQL · Docker </p> <p align="center"> <a href="#"><img src="https://img.shields.io/badge/Node.js-18+-green.svg" alt="Node Version" /></a> <a href="#"><img src="https://img.shields.io/badge/NestJS-Backend-red.svg" alt="NestJS" /></a> <a href="#"><img src="https://img.shields.io/badge/React-Frontend-blue.svg" alt="React" /></a> <a href="#"><img src="https://img.shields.io/badge/PostgreSQL-Database-blue.svg" alt="PostgreSQL" /></a> <a href="#"><img src="https://img.shields.io/badge/Docker-Enabled-informational.svg" alt="Docker" /></a> </p>
