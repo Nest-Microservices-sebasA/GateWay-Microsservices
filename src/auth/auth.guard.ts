@@ -1,10 +1,13 @@
-import { CanActivate, ExecutionContext, UnauthorizedException } from "@nestjs/common";
-import { Observable } from "rxjs";
+import { CanActivate, ExecutionContext, Inject, UnauthorizedException } from "@nestjs/common";
+import { firstValueFrom, Observable } from "rxjs";
 import { Request } from 'express';
+import { NATS_SERVICE } from "src/config";
+import { ClientProxy } from "@nestjs/microservices";
 
 
 export class AuthGuard implements CanActivate {
-    canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
+    constructor(@Inject(NATS_SERVICE)private readonly client: ClientProxy){}
+    async canActivate(context: ExecutionContext) {
         const request = context.switchToHttp().getRequest();
         const token = this.tokenExtractor(request);
 
@@ -13,7 +16,12 @@ export class AuthGuard implements CanActivate {
         }
 
         try{
-            request.user = { token };
+            const {user, token: newtoken} = await firstValueFrom(
+                this.client.send('verify.token', token )
+
+            )
+            request.user = user;
+            request.token = newtoken;
             return true;
         }catch{
             throw new UnauthorizedException();

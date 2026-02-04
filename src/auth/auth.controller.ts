@@ -1,29 +1,40 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { Controller, Get, Post, Body, UseGuards, Inject } from '@nestjs/common';
 import { RegisterUserDto } from './dto/register-user-dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthGuard } from './auth.guard';
-
-
+import { NATS_SERVICE } from 'src/config';
+import { catchError } from 'rxjs';
+import { User } from '../common/decorators/user.decorator';
+import { Token } from '../common/decorators/token.decorator';
+import { User as IUser } from './entities/auth.entity';
 
 @Controller('auth')
 export class AuthController {
-
-  constructor() {}
+  constructor(@Inject(NATS_SERVICE) private readonly client: ClientProxy) {}
 
   @Post('/register')
   register(@Body() registerUserDto: RegisterUserDto) {
-    return registerUserDto;
+    return this.client.send('auth.register', registerUserDto).pipe(
+      catchError((error) => {
+        throw new RpcException(error);
+      }),
+    );
   }
 
   @Post('/login')
   loggin(@Body() loginUserDto: LoginUserDto) {
-    return loginUserDto;
+    return this.client.send('auth.login', loginUserDto)
+    .pipe(
+      catchError((error) => {
+        throw new RpcException(error);
+      }),
+    );
   }
-
 
   @UseGuards(AuthGuard)
   @Get('/verify')
-  verify() {
-    return '...verify';
+  verify(@User() user: IUser,  @Token() token: string) {
+    return {user, token};
   }
 }

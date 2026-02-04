@@ -1,3 +1,4 @@
+import { User as IUser } from './../auth/entities/auth.entity';
 import {
   BadRequestException,
   Body,
@@ -10,27 +11,45 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
-import { firstValueFrom } from 'rxjs';
-import { MESSAGE_SERVICE } from 'src/config';
+import { catchError, firstValueFrom } from 'rxjs';
+import { MESSAGE_SERVICE, NATS_SERVICE } from 'src/config';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { User } from 'src/common/decorators/user.decorator';
 
 @Controller('messages')
 export class MessagesController {
   constructor(
-    @Inject(MESSAGE_SERVICE) private readonly messageClient: ClientProxy,
+    @Inject(MESSAGE_SERVICE)
+    private readonly messageClient: ClientProxy,
+
+    @Inject(NATS_SERVICE)
+    private readonly authClient: ClientProxy,
   ) {}
 
+  @UseGuards(AuthGuard)
   @Post('create')
-  createMessage(@Body() CreatePostDto: CreatePostDto) {
-    return this.messageClient.send({ cmd: 'create_message' }, CreatePostDto);
+  createMessage(@Body() createPostDto: CreatePostDto, @User() user: IUser) {
+    return this.messageClient.send({ cmd: 'create_message' }, { ...createPostDto, userId: user.id })
+    .pipe(
+      catchError(error => {
+        throw new RpcException(error);
+      },
+    ));
   }
 
+  @UseGuards(AuthGuard)
   @Get('list')
-  findAllMessages() {
-    return this.messageClient.send({ cmd: 'list_messages' }, {});
+  findAllMessages(@User() user: IUser) {
+    return this.messageClient.send({ cmd: 'list_messages' }, {userId: user.id} ).pipe(
+      catchError(error => {
+        throw new RpcException(error);
+      }),
+    );
   }
 
   @Get('/findOne/:id')
